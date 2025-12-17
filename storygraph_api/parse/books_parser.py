@@ -29,6 +29,8 @@ class BooksParser:
         review_content = BooksScraper.community_reviews(book_id)
         rev_soup = BeautifulSoup(review_content,'html.parser')
         avg_rating = rev_soup.find('span',class_="average-star-rating").text.strip()
+        book_cover_div = soup.find('div',class_="book-cover")
+        book_cover_img_src = book_cover_div.find('img')['src']
         warnings = BooksParser.content_warnings(book_id)
         data = {
                 'title':title,
@@ -38,6 +40,7 @@ class BooksParser:
                 'tags': tags,
                 'average_rating': avg_rating,
                 'description':description,
+                'book_cover':book_cover_img_src,
                 'warnings': warnings
                 }
         return data
