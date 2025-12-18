@@ -38,6 +38,7 @@ class UserScraper:
     @staticmethod
     def to_read(uname, cookie):
         url = f"https://app.thestorygraph.com/to-read/{uname}"
+        print(url)
         return UserScraper.fetch_url(url,cookie)
 
     @staticmethod
